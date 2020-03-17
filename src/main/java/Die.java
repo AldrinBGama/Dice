@@ -15,32 +15,28 @@ public class Die {
     }
 
     public Die(int sides , int[] probabilities) {
-        this.sides=sides;
-        int i =0;
-        while (i<probabilities.length){
-            int p = probabilities[i];
-            if (p < 0){
-                System.out.println ( "ERROR : negative probabilities not allowed" );}
-            else if(p != probabilities[i]){
+        this.sides = sides;
+        int i = 0;
+        while (++i < probabilities.length) {
+            if (probabilities[i] < 0) {
+                System.out.println ("ERROR : negative probabilities not allowed");
+            } else if (probabilities[i] != probabilities[i]) {
                 System.out.println ("ERROR : only integer values allowed");
-            }else if (p == 0) {
+            } else if (probabilities[i] == 0) {
                 System.out.println ("ERROR : probability sum must be greater than 0");
-            }else if(p == probabilities[i]){
-                sides=probabilities.length;
+            } else if (probabilities[i] == probabilities[i]) {
+                sides = probabilities.length;
             }
-            i++;
         }
     }
 
     public void roll() {
-
         random = new Random();
         if (probabilities == null) {
             int i = 0;
-            while (i < sides) {
+            while (++i < sides) {
                 int generateRoll = random.nextInt ( sides ) + 1;
-                value ( generateRoll );
-                i++;
+                value (generateRoll);
             }
         }
     }
